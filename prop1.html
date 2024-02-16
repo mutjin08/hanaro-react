@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>템플릿</h1>
+  <div id="root"></div>
+  <script type="text/babel">
+    ReactDOM.render(
+      <div>
+        <Parent/>
+      </div>,
+      document.getElementById("root")
+    );
+
+    function Parent(){
+      const [key2, setKey2] = React.useState("새로운키!!!");
+      const parentFunc = () => {
+        alert("부모함수 호출!!!");
+      }
+      return(
+        <div>
+          <Child1 key1="test" parentFunc = {parentFunc}/>
+          <Child2 key1="test" key2={key2} />
+        </div>
+      )
+    }
+
+    function Child1(props){
+      return (
+        <div>
+          <h1>{props.key1}</h1>
+          <button type="button" onClick={props.parentFunc}>룰룰루</button>
+        </div>
+      );
+    }
+
+    function Child2({key1, key2}){
+      return (
+        <div>
+          <h1 style={{color:"red"}}>{key1}</h1>
+          <h1 style={{color:"blue"}}>{key2}</h1>
+        </div>
+      );
+    }
+  </script>
+</body>
+</html>
