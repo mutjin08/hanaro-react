@@ -24,6 +24,7 @@
     <script type="text/babel">
         ReactDOM.render(
             <div>
+                <App/>
             </div>
             ,document.getElementById('root')
         ); 
@@ -33,10 +34,52 @@
             //react의 모든 컴포넌트는 state라는 것을 갖는다. 여기에 계속 사용할 값 등을 저장한다.
             //React.useState() 함수는 state에 값을 저장하고,
             //그 메모리 주소와 그 메모리의 값을 변경하는 함수주소 2개를 배열의 형태로 반환한다.
+            //함수명은 마음대로 만들어도 되긴 하지만 묵시적으로 set변수명 카멜표기법으로 약속되어 있다
             const [count, setCount] = React.useState(0);
+            //중요한 값이나 컴포넌트가 유지되는 동안 유지되어야 할 값은 반드시 state에 저장하자
+            //값 바꿀 때 직접 변수명으로 바꾸지 말고 set변수명 함수를 사용해라. 그러면 알아듣고 렌더링한다.
+
+            //함수 주소가 들어가야 한다
+            //변수의 값을 바꾸고 싶으면 변수가 아니라, set 함수를 통해서 해야 한다.
+            const increase = () => { setCount(count + 1); }
+            const decrease = () => { setCount(count - 1); }
+
             return(
                 <div>
                     <h1>최상위부모</h1>
+                    <h3>현재 카운트 : {count}</h3>
+
+                    {/*함수 주소를 변수명만 전달해야 한다. 
+                    ()가 있으면 함수를 호출한 다음에 반환값을 저장한다. 
+                    클릭할 때가 아니고, 이 컴포넌트가 렌더링 될 때 함수가 먼저 호출된다.
+                    참조를 전달하는 셈이다*/}
+                    <button type = "button" onClick={increase}>증가</button>
+                    <button type = "button" onClick={decrease}>감소</button>
+                    <Child1 count={count} increase={increase} decrease={decrease}/>
+                    <Child2 count={count} increase={increase} decrease={decrease}/>
+                </div>
+            )
+        }
+
+        function Child1(props){
+            return(
+                <div>
+                    <h3>자식컴포넌트111 : {props.count}</h3>
+                    <button type="button" onClick={props.increase}>증가111</button>
+                    <button type="button" onClick={props.decrease}>감소111</button>
+                </div>
+            )
+        }
+
+        //props는 json객체이기 때문에 json 형태로 매개변수를 전달할 수 있다
+        //모든 함수기반 컴포넌트들은 매개변수가 props이다
+        //const {count, increase, decrease} = props가 진행된다
+        function Child2({count, increase, decrease}){
+            return(
+                <div>
+                    <h3>자식컴포넌트222 : {count}</h3>
+                    <button type="button" onClick={increase}>증가222</button>
+                    <button type="button" onClick={decrease}>감소222</button>
                 </div>
             )
         }
