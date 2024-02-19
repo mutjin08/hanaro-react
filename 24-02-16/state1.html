@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h1>이벤트 처리</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+              <MyComponent/>
+              <MyComponent/>
+            </div>
+            ,//첫번째 매개변수 - 트리구조의 태그집합
+            document.getElementById('root')//두번째 매개변수 - 시작 태그 객체
+        );
+
+        //함수기반 컴포넌트 - 이벤트 처리
+
+        //sta
+        function MyComponent(){
+          const [name, setName] = React.useState("홍길동");
+          const [age, setAge] = React.useState(24);
+          console.log(React.useState(0))
+
+          //코드를 여기다 두면 함수 호출하다 말고 setName함수 무한rendering 상태가 된다
+          //setName("임꺽정");
+          //setAge(30);
+
+          const setValue = () => {
+            setName("임꺽정");
+            setAge(34);
+          }
+          return(
+            <div>
+              <h1>{name} {age}</h1>
+              <div>{name+"님의 나이는"+age+"입니다"}</div>
+
+              <button type="button" onClick={setValue}>값바꾸기</button>
+            </div>
+          )
+        }
+    </script>
+</body>
+</html>

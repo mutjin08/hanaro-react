@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+<body>
+  <h1>계산기</h1>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    function Calculator(){
+      // 상태 변수 정의
+      const [num1, setNum1] = useState('');
+      const [num2, setNum2] = useState('');
+      const [result, setResult] = useState(null);
+
+      // 숫자 입력 핸들러
+      const handleNum1Change = (e) => {
+        setNum1(e.target.value);
+      };
+
+      const handleNum2Change = (e) => {
+        setNum2(e.target.value);
+      };
+
+      // 연산 수행 핸들러
+      const handleAdd = () => {
+        setResult(parseFloat(num1) + parseFloat(num2));
+      };
+
+      const handleSubtract = () => {
+        setResult(parseFloat(num1) - parseFloat(num2));
+      };
+
+      const handleMultiply = () => {
+        setResult(parseFloat(num1) * parseFloat(num2));
+      };
+
+      const handleDivide = () => {
+        setResult(parseFloat(num1) / parseFloat(num2));
+      };
+
+      return (
+        <div>
+          <label>
+            숫자 1:
+            <input type="number" value={num1} onChange={handleNum1Change} />
+          </label>
+          <br />
+          <label>
+            숫자 2:
+            <input type="number" value={num2} onChange={handleNum2Change} />
+          </label>
+          <br />
+          <button onClick={handleAdd}>더하기</button>
+          <button onClick={handleSubtract}>빼기</button>
+          <button onClick={handleMultiply}>곱하기</button>
+          <button onClick={handleDivide}>나누기</button>
+          <br />
+          {result !== null && <p>결과: {result}</p>}
+        </div>
+      );
+    };
+
+    ReactDOM.render(
+      <div>
+        <Calculator/>
+      </div>,
+      document.getElementById("root")
+    );
+  </script>
+</body>
+</html>

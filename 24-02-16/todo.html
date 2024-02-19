@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+<body>
+  <h1>템플릿</h1>
+  <div id="root"></div>
+  <script type="text/babel">
+    let todoList = [
+      {id:1, todo:"react 공부하기???"},
+      {id:2, todo:"수영하기???"},
+      {id:3, todo:"자습하기???"},
+      {id:4, todo:"운동하기???"},
+      {id:5, todo:"고순이 케이지 청소하기???"}
+    ];
+    ReactDOM.render(
+      <div>
+        <ListToDo todoList={todoList}/>
+      </div>,
+      document.getElementById("root")
+    );
+    //props라는 파라미터가 항상 있다
+    //부모컴포넌트가 자식컴포넌트에 데이터를 전달
+    function ListToDo(props){
+      return(
+        <div>
+          <h1>할 일</h1>
+          <ul>
+            {/*<li>{props.todoList[0].id} {props.todoList[0].todo}</li>
+            <li>{props.todoList[1].id} {props.todoList[1].todo}</li>*/}
+            
+            {/*map함수 : 배열요소와 인자를 매개변수로 하고, 변경된 요소를 반환*/}
+            {props.todoList.map((item) => (<li>{item.id} {item.todo}</li>))}
+          </ul>
+        </div>
+
+      );
+    }
+  </script>
+</body>
+</html>

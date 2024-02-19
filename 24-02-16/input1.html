@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>이벤트 처리</h1>
+  <div id="root"></div>
+  <script type="text/babel">
+    function InputTest() {
+      const [value1, setValue1] = React.useState("");
+      const [value2, setValue2] = React.useState("");
+      const valueChange = (e) => {
+        //const { id, value } = e.target;
+        if(e.target.id=="value1") setValue1(e.target.value);
+        else if(e.target.id=="value2") setValue2(e.target.value);
+      }
+  
+      return (
+        <div>
+          <input type="text" name="" id="value1" value={value1} onChange={valueChange}/>
+          <input type="text" name="" id="value2" value={value2} onChange={valueChange}/>
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <div>
+        <InputTest/>
+      </div>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
