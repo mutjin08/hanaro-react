@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+                <h1>base</h1>
+                <App/>
+            </div>,
+            document.getElementById('root')
+        ); 
+
+        function App(){
+            const [studentInfoList, setStudentInfoList] = React.useState([]);
+            const [studentInfo, setStudentInfo] = React.useState(
+                {name:"", kor: "", eng:"", mat:""}
+            );
+            const {name, kor, eng, mat} = studentInfo;
+
+            const nameChange = (e) => {setStudentInfo({...studentInfo, name:e.target.value})}
+            const korChange = (e) => {setStudentInfo({...studentInfo, kor:e.target.value})}
+            const engChange = (e) => {setStudentInfo({...studentInfo, eng:e.target.value})}
+            const matChange = (e) => {setStudentInfo({...studentInfo, mat:e.target.value})}
+            
+            const append = () => {
+                setStudentInfoList(studentInfoList.concat(studentInfo));
+                setStudentInfo({name:"", kor: "", eng:"", mat:""})
+                window.document.querySelector("#name").focus();
+            }
+            
+            return(
+                <div>
+                    이름: <input id="name" type="text" onChange={nameChange} value={name}/><br/>
+                    국어: <input id="kor" type="text" onChange={korChange} value={kor}/><br/>
+                    영어: <input id="eng" type="text" onChange={engChange} value={eng}/><br/>
+                    수학: <input id="mat" type="text" onChange={matChange} value={mat}/><br/>
+                    <span>{name} {kor} {eng} {mat}</span>
+                    <button type="button" onClick={append}>추가</button>
+                    <hr/>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>국어</th>
+                                <th>영어</th>
+                                <th>수학</th>
+                                <th>총합</th>
+                                <th>평균</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {studentInfoList.map((student, index) => (
+                                <tr key={index}>
+                                    <td>{student.name}</td>
+                                    <td>{student.kor}</td>
+                                    <td>{student.eng}</td>
+                                    <td>{student.mat}</td>
+                                    <td>{parseInt(student.kor)+parseInt(student.eng)+parseInt(student.mat)}</td>
+                                    <td>{((parseInt(student.kor)+parseInt(student.eng)+parseInt(student.mat))/3).toFixed(0)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }   
+    </script>
+</body>
+</html>
