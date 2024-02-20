@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -22,10 +22,10 @@ function App() {
 function Layout() {
   return (
     <>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+      <nav className='navbar navbar-expand-sm bg-light'>
+        <ul className='navbar-nav'>
+          <li className="nav-item"><Link className='nav-link' to="/">Home</Link></li>
+          <li className="nav-item"><Link className='nav-link' to="/about">About</Link></li>
         </ul>
       </nav>
       <hr />

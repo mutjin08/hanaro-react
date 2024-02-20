@@ -19,7 +19,10 @@ def solution(depth, cnt):
 
 
 n = int(input())
-board = list(map(int, input().split()))
+board = []
+for _ in range(n):
+    board.append(list(map(int, input().split())))
 visited = [0]*n
 answer = 1e9
 solution(0, 0)
+print(answer)

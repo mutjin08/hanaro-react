@@ -7,7 +7,7 @@ brew install yarn --ignore-dependencies
 brew upgrade
 
 yarn global add create-react-app
-sudo npx create-react-app react-project
+npx create-react-app react-project
 
 sudo chown -R 501:20 "/Users/mutjin08/.npm"
 npm cache clear --force
@@ -21,3 +21,8 @@ react 할때는 yarn을 사용한다
 
 <h1>vscode extensions</h1>
 Simple React Snippets - Burke Holland
+
+<h1>myapp-router</h1>
+npm install react-router-dom
+npm install bootstrap
+yarn start
