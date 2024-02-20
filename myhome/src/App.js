@@ -12,7 +12,8 @@ function App() {
     <div className="container-fluid">
       <Routes>
         <Route path="/" element={<Layout/>} >
-          <Route index element={<HeroList/>} />
+          <Route index element={<Home/>} />
+          <Route path="/hero/list" element={<HeroList/>} />
         </Route>
       </Routes>
     </div>

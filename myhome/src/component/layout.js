@@ -1,5 +1,5 @@
-//메인 골격 디자인 파일-전체적인 윤곽을 만든다.
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+
 function Layout() {
     return (
         <>
@@ -7,22 +7,17 @@ function Layout() {
                 <div className="container-fluid">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link active" href="#">Active</a>
+                            <Link to="/" className="nav-link">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
+                            <Link to="/hero/list" className="nav-link">영웅들</Link>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <Outlet/>
+            <Outlet />
         </>
     );
 }
+
 export default Layout;

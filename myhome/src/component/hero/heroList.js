@@ -10,7 +10,9 @@ function HeroList() {
         // Using the previous state to update the hero array
         setHero(prevHero => [
             ...prevHero,
-            { "id": 1, "name": "김고순", "description": "가시를 세우고 화내기" }
+            { "id": 1, "name": "김고순", "description": "열심히 밀웜먹기" },
+            { "id": 2, "name": "최도치", "description": "땅굴파고 숨어서 자기" },
+            { "id": 3, "name": "이가시", "description": "가시를 세우고 화내기" }
         ]);
         setLoading(true);
     }, []); // 백앤드서버와 통신
