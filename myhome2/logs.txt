@@ -1,0 +1,9 @@
+npx create-react-app myhome2
+npm install @babel/plugin-proposal-private-property-in-object
+yarn start
+
+> functional approach
+npm install
+npm install bootstrap
+npm install axios
+npm install react-router-dom
