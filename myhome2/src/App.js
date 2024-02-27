@@ -1,12 +1,11 @@
 //import logo from './logo.svg';
-
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Layout1 from './component/layout1';
 import Home from './component/home';
-import BoardList from './component/board/board_list';
-import BoardWrite from './component/board/board_write';
-import BoardView from './component/board/board_view';
+import BoardList from './component/board/boardlist';
+import BoardWrite from './component/board/boardwrite';
+import BoardView from './component/board/boardview';
 
 function App() {
   return (
@@ -23,6 +22,7 @@ function App() {
               <Route path="board/list" element={<BoardList/>}/>
               <Route path="board/view/:id" element={<BoardView/>}/>
               <Route path="board/write" element={<BoardWrite/>}/>
+              <Route path="kakao" element={<Kakao/>}/>
           </Route>
       </Routes>
     </div>

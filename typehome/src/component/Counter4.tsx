@@ -14,15 +14,8 @@ function Temp(currentState, action){
 */
 
 import { useReducer, useState } from "react";
-
-//interface는 JSON처럼 사용하면 된다
-interface MyState{
-    count:number;
-}
-
-//Reducer에 전달할 action : 함수인데, type을 미리 지정해야 한다
-//매개변수로 type, value를 전달한다
-type CounterAction = {type:"increase"} | {type:"decrease"} | {type:"reset"} | {type:"add", count:5}
+import { myStateReducer } from "./reducer/myStateReducer";
+import {MyState, CounterAction} from "./type/commonType";
 
 const initialState : MyState = {count:0}
 
@@ -49,13 +42,14 @@ function StateReducer(state:MyState, action:CounterAction):MyState{
     return {count:0}
 }
 
-function Counter3() {
+function Counter4() {
     //const [number, setNumber] = useState<MyState>({count:0});
 
 
-    const [status, dispatch] = useReducer(StateReducer, initialState); 
+    const [status, dispatch] = useReducer(myStateReducer, initialState); 
     //status=상태정보, dispatch=함수
     //StatusReducer를 dispatch를 통해서 호출해라는 의미임
+    //useReducer 함수가 매개변수 reducer함수랑 초기상태를 받아가서 새로운 state와 함수 주소를 반환함
 
     const increase = () => {
         dispatch({type:"increase"})
@@ -80,4 +74,4 @@ function Counter3() {
     );
 }
 
-export default Counter3;
+export default Counter4;
